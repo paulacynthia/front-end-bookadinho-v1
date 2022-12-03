@@ -1,5 +1,6 @@
-import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react"
-import React, { useEffect } from "react"
+import {  Button, useToast, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, InputRightElement, InputGroup, Icon } from "@chakra-ui/react"
+import React, { useEffect, useState } from "react"
+import { GrFormViewHide, GrFormView } from "react-icons/gr";
 
 import {login} from '../routes/routes'
 
@@ -9,13 +10,27 @@ interface ModalLoginPros {
 }
 
 export function ModalLogin({titleButton, form}: ModalLoginPros) {
+  const [show, setShow] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const userName = React.useRef(null)
-  const password = React.useRef(null)
+  const errorLogin = useToast()
+  const userNameRef = React.useRef(null)
+  const passwordRef = React.useRef(null)
 
   async function handleLogin() {
-    console.log('handleLogin')
+    const {value: userName} = userNameRef.current
+    const {value: password} = passwordRef.current
+    const userLogin = await login({userName, password})
+
+    if(userLogin.status == "200" || userLogin.result?.id) {
+      return window.location.href = "/home";
+    }
+    return errorLogin({
+      description: "Nome de usuário ou senha incorreta.",
+      position: 'top',
+      status: 'warning',
+      duration: 2000,
+      isClosable: true,
+    })
   }
 
   return (
@@ -36,11 +51,10 @@ export function ModalLogin({titleButton, form}: ModalLoginPros) {
       >
         {titleButton}
       </Button>
-      
 
       <Modal
-        initialFocusRef={userName}
-        finalFocusRef={password}
+        initialFocusRef={userNameRef}
+        finalFocusRef={passwordRef}
         isOpen={isOpen}
         onClose={onClose}
       >
@@ -51,17 +65,25 @@ export function ModalLogin({titleButton, form}: ModalLoginPros) {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel color="blackX.600">{form.user}</FormLabel>
-              <Input ref={userName} letterSpacing="1px" fontWeight="400" placeholder={form.placeholderUser} _hover={{borderColor: 'blackX.600', boxShadow: '0 0 0 transparent'}} _focus={{borderColor: 'blackX.600', boxShadow: '0px 0px 5px #989B9A'}} _placeholder={{color: 'blackX.500', fontWeight: "400", fontSize: "0.9rem"}}  borderColor="blackX.500"/>
+              <Input ref={userNameRef} letterSpacing="1px" fontWeight="400" placeholder={form.placeholderUser} _hover={{borderColor: 'blackX.600', boxShadow: '0 0 0 transparent'}} _focus={{borderColor: 'blackX.600', boxShadow: '0px 0px 5px #989B9A'}} _placeholder={{color: 'blackX.500', fontWeight: "400", fontSize: "0.9rem"}}  borderColor="blackX.500"/>
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>{form.password}</FormLabel>
-              <Input ref={password} placeholder={form.placeholderPassword} letterSpacing="1px" _hover={{borderColor: 'blackX.600', boxShadow: '0 0 0 transparent'}} _focus={{borderColor: 'blackX.600', boxShadow: '0px 0px 5px #989B9A'}} _placeholder={{color: 'blackX.500', fontWeight: "400", fontSize: "0.9rem"}}  borderColor="blackX.500"/>
+              <InputGroup size='md'>
+                <Input ref={passwordRef} type={show ? 'text' : 'password'} placeholder={form.placeholderPassword} letterSpacing="1px" _hover={{borderColor: 'blackX.600', boxShadow: '0 0 0 transparent'}} _focus={{borderColor: 'blackX.600', boxShadow: '0px 0px 5px #989B9A'}} _placeholder={{color: 'blackX.500', fontWeight: "400", fontSize: "0.9rem"}}  borderColor="blackX.500"/>
+                <InputRightElement width='4.5rem'>
+                  <Button h='1.75rem' size='sm' onClick={() => setShow(!show)} background="none">
+                    <Icon as={show ? GrFormViewHide : GrFormView} fontSize="20"/>
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
             <Button
+              type="submit"
               backgroundColor="orangeX.600" color="whiteX.700"
               border="1px solid #0F241D"
               _hover={{ color: "blackX.600" }}
