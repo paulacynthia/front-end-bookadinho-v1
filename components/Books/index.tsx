@@ -27,9 +27,10 @@ export function Book({
       maxWidth={"27.6875rem"}
       alignItems="flex-start"
       direction={"column"}
+      justifyContent="space-between"
     >
-      <Flex gap="1rem">
-        <Image src={image} alt={imageDescription} />
+      <Flex gap="1rem" >
+        <Image maxWidth="9.375rem" src={image} alt={imageDescription} />
         <Box>
           <Flex justifyContent={"space-between"}>
             <Box>
@@ -41,37 +42,48 @@ export function Book({
             </Box>
             <Icon as={HiBookmark} fontSize="20" color="orangeX.600" />
           </Flex>
-          <Flex direction={"column"} gap="1rem" width={"full"}>
-            <Flex direction={"column"} gap="0.3rem">
-              <Text
-                fontFamily={"Poppins"}
-                fontWeight="semibold"
-                fontSize="0.875rem"
-                color="#0F241D"
-              >
-                {title}
-              </Text>
-              <Text
-                fontFamily={"Poppins"}
-                fontWeight="semibold"
-                fontSize="0.6875rem"
-                color="#AAAAAA"
-              >
-                {author}
-              </Text>
-              <Text
-                fontFamily={"Dm Sans"}
-                fontWeight="normal"
-                fontSize="0.875rem"
-                color="#767676"
-              >
-                {description}
-              </Text>
-            </Flex>
+
+          <Flex direction={"column"} gap="0.3rem">
+            <Text
+              fontFamily={"Poppins"}
+              fontWeight="semibold"
+              fontSize="0.875rem"
+              color="#0F241D"
+            >
+              {title}
+            </Text>
+            <Text
+              fontFamily={"Poppins"}
+              fontWeight="semibold"
+              fontSize="0.6875rem"
+              color="#AAAAAA"
+            >
+              {author}
+            </Text>
+            <Text
+              fontFamily={"Dm Sans"}
+              fontWeight="normal"
+              fontSize="0.875rem"
+              color="#767676"
+            >
+              {description}
+            </Text>
           </Flex>
         </Box>
       </Flex>
-      <Button width="100%" background={"orangeX.600"} color="#F9F9F9" borderRadius={"1.25rem"}>Visualizar o livro</Button>
+      <Button
+        width="100%"
+        background={"orangeX.600"}
+        color="#F9F9F9"
+        letterSpacing="1px"
+        borderRadius={"1.25rem"}
+         _hover={{
+            color: "blackX.600",
+          }}
+          _active={{ backgroundColor: "blackX.600", color: "whiteX.600" }}
+        >
+        Visualizar o livro
+      </Button>
     </Flex>
   );
 }
