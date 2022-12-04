@@ -102,9 +102,7 @@ export function Login() {
           }}
           marginBottom="2rem"
           _active={{ backgroundColor: "whiteX.700", color: "blackX.600" }}
-          onClick={() => {
-            window.location.href = "/cadastro";
-          }}
+          onClick={() => window.location.href = "/cadastro"}
         >
           Cadastrar-se
         </Button>
