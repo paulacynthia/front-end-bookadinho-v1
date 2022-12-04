@@ -32,9 +32,9 @@ export const profile = async ({profileid}) => {
   return profile.data
 }
 
-export const createProfile = async ({name = "", userName = "", description = "", likes = [], changeBooks = [], latestReadings = [], photo =""}) => {
-  if(!name || !userName) {
-    return {"status": "203", "message": "Nome e nome de usuário são obrigatórios!"}
+export const createProfile = async ({name = "", userName = "", description = "", likes = [], changeBooks = [], latestReadings = [], photo = "", password = ""}) => {
+  if(!name || !userName || !password) {
+    return {"status": "203", "message": "Nome de usuário e senha são obrigatórios!"}
   }
 
   const profile = await axios({
@@ -47,7 +47,8 @@ export const createProfile = async ({name = "", userName = "", description = "",
       likes,
       changeBooks,
       latestReadings,
-      photo
+      photo,
+      password
     }
   })
 

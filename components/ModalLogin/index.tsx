@@ -1,5 +1,5 @@
 import {  Button, useToast, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, InputRightElement, InputGroup, Icon } from "@chakra-ui/react"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { GrFormViewHide, GrFormView } from "react-icons/gr";
 
 import {login} from '../routes/routes'
