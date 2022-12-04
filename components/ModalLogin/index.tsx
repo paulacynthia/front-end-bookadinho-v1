@@ -21,6 +21,7 @@ export function ModalLogin({titleButton, form}: ModalLoginPros) {
     const userLogin = await login({userName, password})
 
     if(userLogin.status == "200" || userLogin.result?.id) {
+      localStorage.setItem('profile', JSON.stringify(userLogin.result))
       return window.location.href = "/home";
     }
     return errorLogin({

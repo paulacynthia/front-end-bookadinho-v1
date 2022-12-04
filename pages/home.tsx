@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [books, setBooks] = useState([])
+
   
   useEffect(() => {
     const handleBooks = async () => {
