@@ -44,10 +44,10 @@ export function Layout({ title, children }: LayoutProps) {
       {/* mobilenav */}
       <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
       <Flex
-        justify="center"
+        justifyContent="center"
+        alignItems="center"
         height="100vh"
         paddingTop="2.9375rem"
-        marginLeft="15rem"
       >
         <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh">
           <Flex padding="1.875rem 30rem 1.875rem 1.875rem">

@@ -1,8 +1,7 @@
 import { Box, Button, Divider, Flex, FormControl, FormLabel, Icon, Input, InputGroup, InputRightElement, Text, Textarea, useMediaQuery, useToast } from "@chakra-ui/react";
-import React, { useRef, useEffect, useState } from "react"
-import { createProfile } from "../components/routes/routes";
+import React, { useRef, useState } from "react"
+import { createProfile } from "../utils/routes/routes";
 import { GrFormViewHide, GrFormView } from "react-icons/gr";
-
 
 export default function Register() {
   const [isLargerThan600] = useMediaQuery('(min-width: 600px)')
