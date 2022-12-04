@@ -3,6 +3,7 @@ import { FiBook } from "react-icons/fi";
 import { HiBookmark } from "react-icons/hi";
 
 interface BookProps {
+  id: number | string
   title: string;
   author: string;
   image: string;
@@ -11,6 +12,7 @@ interface BookProps {
 }
 
 export function Book({
+  id,
   title,
   author,
   image,
@@ -77,11 +79,12 @@ export function Book({
         color="#F9F9F9"
         letterSpacing="1px"
         borderRadius={"1.25rem"}
-         _hover={{
-            color: "blackX.600",
-          }}
-          _active={{ backgroundColor: "blackX.600", color: "whiteX.600" }}
-        >
+        _hover={{
+          color: "blackX.600",
+        }}
+        _active={{ backgroundColor: "blackX.600", color: "whiteX.600" }}
+        onClick={() => window.location.href = `/livro/?id=${id}&titulo=${title.replace(' ', '-')}`}
+      >
         Visualizar o livro
       </Button>
     </Flex>

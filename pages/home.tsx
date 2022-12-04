@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [books, setBooks] = useState([])
 
-  
   useEffect(() => {
     const handleBooks = async () => {
       const reqBooks = await home()
@@ -23,6 +22,7 @@ export default function Home() {
         {books.map((book) => (
           <Book
             key={book.id}
+            id={book.id}
             title={book.name}
             author={book.author}
             image={book.photo}
