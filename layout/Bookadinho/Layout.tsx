@@ -23,7 +23,7 @@ interface LayoutProps {
 export function Layout({ title, children }: LayoutProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg="#F7F8FA">
+    <Box bg="#F7F8FA">
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -46,10 +46,9 @@ export function Layout({ title, children }: LayoutProps) {
       <Flex
         justifyContent="center"
         alignItems="center"
-        height="100vh"
         paddingTop="2.9375rem"
       >
-        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh">
+        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="90vh">
           <Flex padding="1.875rem 30rem 1.875rem 1.875rem">
             <Text
               fontFamily="Dm Sans"
