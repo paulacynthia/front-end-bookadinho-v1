@@ -7,9 +7,25 @@ import {
   Image,
   Button,
 } from '@chakra-ui/react'
+import { useRef } from 'react'
 import { Layout } from '../layout/Bookadinho/Layout'
+import { registerBook } from '../utils/routes/routes'
 
 export default function CadastrarLivro() {
+  const titleRf = useRef()
+  const authorRf = useRef()
+  const descriptionRf = useRef()
+  const photoRf = useRef()
+
+  const  postRegisterBook = async () => {
+    const name = titleRf.current.value
+    const author = authorRf.current.value
+    const description = descriptionRf.current.value
+    const photo = photoRf.current.value
+    const bookRegisted = await registerBook({name, author, description, photo, profileid: '0001'})
+  }
+
+
   return (
     <Layout title="Cadastrar Livro">
       <Flex flexDirection="column" maxWidth="40rem" gap="2rem" margin="0 auto">
@@ -24,6 +40,7 @@ export default function CadastrarLivro() {
               Nome do Livro
             </Text>
             <Input
+              ref={titleRf}
               placeholder="Nome do Livro"
               variant="filled"
               size="lg"
@@ -39,6 +56,7 @@ export default function CadastrarLivro() {
               Autor
             </Text>
             <Input
+              ref={authorRf}
               placeholder="Autor"
               variant="filled"
               size="lg"
@@ -54,6 +72,7 @@ export default function CadastrarLivro() {
               Descrição
             </Text>
             <Textarea
+              ref={descriptionRf}
               placeholder="Descrição"
               variant="filled"
               size="lg"
@@ -69,6 +88,7 @@ export default function CadastrarLivro() {
               Foto
             </Text>
             <Input
+              ref={photoRf}
               placeholder="Foto"
               variant="filled"
               size="lg"
@@ -91,6 +111,7 @@ export default function CadastrarLivro() {
           }}
           transition="all 0.2s"
           _active={{ backgroundColor: 'orangeX.600', color: '#F9E0D9' }}
+          onClick={() => postRegisterBook()}
         >
           Publicar
         </Button>

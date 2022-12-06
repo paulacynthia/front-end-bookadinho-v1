@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const pathName = 'http://localhost:4000'
+const pathName = 'https://back-end-bookadinho.vercel.app'
 
 export const home = async () => {
   const books = await axios({
