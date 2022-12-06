@@ -10,13 +10,7 @@ export default function Profile() {
   useEffect(() => {
     const localStorage = window.localStorage.getItem("profile");
     setUser(JSON.parse(localStorage));
-
-    const getUser = async () => {
-      const request = await profile({ profileid: users.id });
-      setUser(request.result[0]);
-      setLoading(false);
-    };
-    getUser();
+    setLoading(false);
   }, []);
 
   return loading ? (
