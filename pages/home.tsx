@@ -16,7 +16,7 @@ export default function Home() {
   }, [])
 
   return (
-    <Layout title="Input">
+    <Layout title="Home">
       <SimpleGrid columns={2} spacing={10}>
         {books.map((book) => (
           <Book
