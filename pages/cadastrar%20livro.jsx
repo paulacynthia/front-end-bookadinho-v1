@@ -4,10 +4,10 @@ import {
   Input,
   Text,
   Textarea,
-  Image,
   Button,
+  useToast,
 } from '@chakra-ui/react'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Layout } from '../layout/Bookadinho/Layout'
 import { registerBook } from '../utils/routes/routes'
 
@@ -16,15 +16,33 @@ export default function CadastrarLivro() {
   const authorRf = useRef()
   const descriptionRf = useRef()
   const photoRf = useRef()
+  const [profile, setProfile] = useState({})
+  const errorRegisterBook = useToast()
+
+  useEffect(() => {
+    const locaStorage = window.localStorage.getItem('profile')
+    setProfile(JSON.parse(locaStorage))
+  }, [])
 
   const  postRegisterBook = async () => {
     const name = titleRf.current.value
     const author = authorRf.current.value
     const description = descriptionRf.current.value
     const photo = photoRf.current.value
-    const bookRegisted = await registerBook({name, author, description, photo, profileid: '0001'})
-  }
+    const request = await registerBook({name, author, description, photo, profileid: profile.id})
+    if(request.status === "200") {
+      return window.location.href = 
+      `/livro/?id=${request.result[0].id}&titulo=${request.result[0].name.replace(" ", "-")}`
+    }
 
+    return errorRegisterBook({
+      description: "Todos os campos são obrigatórios!",
+      position: 'top',
+      status: 'warning',
+      duration: 2000,
+      isClosable: true,
+    })
+  }
 
   return (
     <Layout title="Cadastrar Livro">

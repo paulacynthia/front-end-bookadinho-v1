@@ -11,19 +11,14 @@ import { changeBook } from "../utils/routes/routes";
 export default function Bola() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [books, setBooks] = useState({
-    id: "",
-    name: "",
-    author: "",
-    description: "",
-    photo: "",
-    profile: {
-      id: "",
-      userName: "",
-    },
-  });
+  const [books, setBooks] = useState({});
+  const [profile, setProfile] = useState({})
 
   useEffect(() => {
+    const locaStorage = window.localStorage.getItem('profile')
+    console.log('asdasd', JSON.parse(locaStorage))
+    setProfile(JSON.parse(locaStorage))
+
     const getBook = async () => {
       const request = await changeBook({ bookid: router.query.id });
       setBooks(request.result[0]);
@@ -48,6 +43,7 @@ export default function Bola() {
     <Layout title={books.name}>
       <Flex flexDirection="column" maxWidth="40rem" gap="1rem" margin="0 auto">
         <Image
+          fallbackSrc="https://via.placeholder.com/107x149"
           src={books.photo}
           margin="0 auto"
           maxWidth="30%"
@@ -69,7 +65,6 @@ export default function Bola() {
           >
             {books.description}
           </Text>
-
           <Button
             width="400px"
             display="block"
@@ -81,11 +76,10 @@ export default function Bola() {
               color: "orangeX.600",
               background: "#F9E0D9",
             }}
+            isDisabled={profile.userName == books.profile.userName ? true : false}
             transition="all 0.2s"
             _active={{ backgroundColor: "orangeX.600", color: "#F9E0D9" }}
             margin="0 auto"
-
-            // onClick={() => window.location.href = `/livro/?id=${id}&titulo=${title.replace(' ', '-')}`}
             onClick={() => window.location.href = `/chat`}
           >
             Tenho interesse!
