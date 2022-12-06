@@ -23,7 +23,7 @@ interface LayoutProps {
 export function Layout({ title, children }: LayoutProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box bg="#F7F8FA">
+    <Box minH="100vh" bg="#F7F8FA">
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -44,12 +44,14 @@ export function Layout({ title, children }: LayoutProps) {
       {/* mobilenav */}
       <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
       <Flex
-        justifyContent="center"
-        alignItems="center"
+        justify="center"
+        height="100vh"
         paddingTop="2.9375rem"
+        marginLeft="15rem"
+        
       >
-        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="90vh">
-          <Flex padding="1.875rem 30rem 1.875rem 1.875rem">
+        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh" >
+          <Flex padding="1.875rem 30rem 1.875rem 1.875rem" width={"full"}>
             <Text
               fontFamily="Dm Sans"
               fontWeight="400"
@@ -93,7 +95,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <Flex direction="row" justify="space-between">
           <Text
             as="a"
-            href="/"
+            href="/home"
             color="orangeX.600"
             fontWeight="800"
             fontSize="1.5rem"
