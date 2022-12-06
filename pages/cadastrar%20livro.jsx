@@ -5,44 +5,30 @@ import {
   Text,
   Textarea,
   Button,
-  useToast,
-} from '@chakra-ui/react'
-import { useEffect, useRef, useState } from 'react'
-import { Layout } from '../layout/Bookadinho/Layout'
-import { registerBook } from '../utils/routes/routes'
+} from "@chakra-ui/react";
+import { useRef } from "react";
+import { Layout } from "../layout/Bookadinho/Layout";
+import { registerBook } from "../utils/routes/routes";
 
 export default function CadastrarLivro() {
-  const titleRf = useRef()
-  const authorRf = useRef()
-  const descriptionRf = useRef()
-  const photoRf = useRef()
-  const [profile, setProfile] = useState({})
-  const errorRegisterBook = useToast()
+  const titleRf = useRef();
+  const authorRf = useRef();
+  const descriptionRf = useRef();
+  const photoRf = useRef();
 
-  useEffect(() => {
-    const locaStorage = window.localStorage.getItem('profile')
-    setProfile(JSON.parse(locaStorage))
-  }, [])
-
-  const  postRegisterBook = async () => {
-    const name = titleRf.current.value
-    const author = authorRf.current.value
-    const description = descriptionRf.current.value
-    const photo = photoRf.current.value
-    const request = await registerBook({name, author, description, photo, profileid: profile.id})
-    if(request.status === "200") {
-      return window.location.href = 
-      `/livro/?id=${request.result[0].id}&titulo=${request.result[0].name.replace(" ", "-")}`
-    }
-
-    return errorRegisterBook({
-      description: "Todos os campos são obrigatórios!",
-      position: 'top',
-      status: 'warning',
-      duration: 2000,
-      isClosable: true,
-    })
-  }
+  const postRegisterBook = async () => {
+    const name = titleRf.current.value;
+    const author = authorRf.current.value;
+    const description = descriptionRf.current.value;
+    const photo = photoRf.current.value;
+    const bookRegisted = await registerBook({
+      name,
+      author,
+      description,
+      photo,
+      profileid: "0001",
+    });
+  };
 
   return (
     <Layout title="Cadastrar Livro">
@@ -54,7 +40,7 @@ export default function CadastrarLivro() {
           margin="0 auto"
         >
           <Box maxWidth="30rem" margin="0 auto">
-            <Text color="blackX.500" fontFamily={'Dm Sans'} fontWeight="normal">
+            <Text color="blackX.500" fontFamily={"Dm Sans"} fontWeight="normal">
               Nome do Livro
             </Text>
             <Input
@@ -63,14 +49,14 @@ export default function CadastrarLivro() {
               variant="filled"
               size="lg"
               color="blackX.500"
-              fontFamily={'Dm Sans'}
+              fontFamily={"Dm Sans"}
               fontWeight="normal"
-              _placeholder={{ color: 'blackX.500' }}
-              _focus={{ borderColor: 'orangeX.600' }}
+              _placeholder={{ color: "blackX.500" }}
+              _focus={{ borderColor: "orangeX.600" }}
             />
           </Box>
           <Box maxWidth="30rem" margin="0 auto">
-            <Text color="blackX.500" fontFamily={'Dm Sans'} fontWeight="normal">
+            <Text color="blackX.500" fontFamily={"Dm Sans"} fontWeight="normal">
               Autor
             </Text>
             <Input
@@ -79,14 +65,14 @@ export default function CadastrarLivro() {
               variant="filled"
               size="lg"
               color="blackX.500"
-              fontFamily={'Dm Sans'}
+              fontFamily={"Dm Sans"}
               fontWeight="normal"
-              _placeholder={{ color: 'blackX.500' }}
-              _focus={{ borderColor: 'orangeX.600' }}
+              _placeholder={{ color: "blackX.500" }}
+              _focus={{ borderColor: "orangeX.600" }}
             />
           </Box>
           <Box maxWidth="30rem" margin="0 auto">
-            <Text color="blackX.500" fontFamily={'Dm Sans'} fontWeight="normal">
+            <Text color="blackX.500" fontFamily={"Dm Sans"} fontWeight="normal">
               Descrição
             </Text>
             <Textarea
@@ -95,14 +81,14 @@ export default function CadastrarLivro() {
               variant="filled"
               size="lg"
               color="blackX.500"
-              fontFamily={'Dm Sans'}
+              fontFamily={"Dm Sans"}
               fontWeight="normal"
-              _placeholder={{ color: 'blackX.500' }}
-              _focus={{ borderColor: 'orangeX.600' }}
+              _placeholder={{ color: "blackX.500" }}
+              _focus={{ borderColor: "orangeX.600" }}
             />
           </Box>
           <Box maxWidth="30rem" margin="0 auto">
-            <Text color="blackX.500" fontFamily={'Dm Sans'} fontWeight="normal">
+            <Text color="blackX.500" fontFamily={"Dm Sans"} fontWeight="normal">
               Foto
             </Text>
             <Input
@@ -111,29 +97,29 @@ export default function CadastrarLivro() {
               variant="filled"
               size="lg"
               color="blackX.500"
-              fontFamily={'Dm Sans'}
+              fontFamily={"Dm Sans"}
               fontWeight="normal"
-              _placeholder={{ color: 'blackX.500' }}
-              _focus={{ borderColor: 'orangeX.600' }}
+              _placeholder={{ color: "blackX.500" }}
+              _focus={{ borderColor: "orangeX.600" }}
             />
           </Box>
         </Flex>
         <Button
-          background={'orangeX.600'}
+          background={"orangeX.600"}
           color="#F9F9F9"
           letterSpacing="1px"
-          borderRadius={'1.25rem'}
+          borderRadius={"1.25rem"}
           _hover={{
-            color: 'orangeX.600',
-            background: '#F9E0D9',
+            color: "orangeX.600",
+            background: "#F9E0D9",
           }}
           transition="all 0.2s"
-          _active={{ backgroundColor: 'orangeX.600', color: '#F9E0D9' }}
+          _active={{ backgroundColor: "orangeX.600", color: "#F9E0D9" }}
           onClick={() => postRegisterBook()}
         >
           Publicar
         </Button>
       </Flex>
     </Layout>
-  )
+  );
 }

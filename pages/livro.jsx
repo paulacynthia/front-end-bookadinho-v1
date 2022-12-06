@@ -7,7 +7,6 @@ import { AiOutlineUser } from "react-icons/ai";
 import { Layout } from "../layout/Bookadinho/Layout";
 import { changeBook } from "../utils/routes/routes";
 
-
 export default function Bola() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
