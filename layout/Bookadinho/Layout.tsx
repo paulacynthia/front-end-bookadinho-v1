@@ -48,9 +48,10 @@ export function Layout({ title, children }: LayoutProps) {
         height="100vh"
         paddingTop="2.9375rem"
         marginLeft="15rem"
+        
       >
-        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh">
-          <Flex padding="1.875rem 30rem 1.875rem 1.875rem">
+        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh" >
+          <Flex padding="1.875rem 30rem 1.875rem 1.875rem" width={"full"}>
             <Text
               fontFamily="Dm Sans"
               fontWeight="400"
@@ -94,7 +95,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <Flex direction="row" justify="space-between">
           <Text
             as="a"
-            href="/"
+            href="/home"
             color="orangeX.600"
             fontWeight="800"
             fontSize="1.5rem"

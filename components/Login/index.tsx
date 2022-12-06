@@ -96,15 +96,13 @@ export function Login() {
           fontSize={["0.8rem", "1rem", "1.5rem"]}
           fontWeight="500"
           _hover={{
-            backgroundColor: "orangeX.600",
-            border: "1px solid #fff",
-            color: "whiteX.700",
+            color: "orangeX.600",
+            background: "#F9E0D9",
           }}
+          transition="all 0.2s"
+          _active={{ backgroundColor: "orangeX.600", color: "#F9E0D9" }}
           marginBottom="2rem"
-          _active={{ backgroundColor: "whiteX.700", color: "blackX.600" }}
-          onClick={() => {
-            window.location.href = "/home";
-          }}
+          onClick={() => window.location.href = "/cadastro"}
         >
           Cadastrar-se
         </Button>
