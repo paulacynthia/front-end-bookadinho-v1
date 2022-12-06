@@ -25,7 +25,6 @@ export default function Bola() {
 
   useEffect(() => {
     const getBook = async () => {
-      console.log("router", router.query.id);
       const request = await changeBook({ bookid: router.query.id });
       setBooks(request.result[0]);
       setLoading(false);
