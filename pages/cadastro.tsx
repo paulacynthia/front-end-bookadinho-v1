@@ -56,7 +56,7 @@ export default function Register() {
     }
 
     if(createdProfile.status === "200") {
-      localStorage.setItem('profile', JSON.stringify(createdProfile.result))
+      localStorage.setItem('profile', JSON.stringify(createdProfile.result[0]))
       return window.location.href = "/home";
     }
   }
