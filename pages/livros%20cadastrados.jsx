@@ -20,16 +20,17 @@ export default function LivrosCadastrados() {
     return (
         <Layout title="Livros Cadastrados">
             <SimpleGrid columns={2} spacing={10}>
-                {books.map((book) => (
-                    <Book
-                    key={book.id}
-                    id={book.id}
-                    title={book.name}
-                    author={book.author}
-                    image={book.photo}
-                    imageDescription={`Livro ${book.name}`}
-                    description={book.description}
-                    />
+                {
+                    books.map((book) => (
+                        <Book
+                            key={book.id}
+                            id={book.id}
+                            title={book.name}
+                            author={book.author}
+                            image={book.photo}
+                            imageDescription={`Livro ${book.name}`}
+                            description={book.description}
+                        />
                     ))
                 }
             </SimpleGrid>
