@@ -1,6 +1,7 @@
 import {
   Box,
   BoxProps,
+  Button,
   CloseButton,
   Divider,
   Drawer,
@@ -19,6 +20,8 @@ interface LayoutProps {
   title: string | any;
   children: ReactNode;
 }
+
+
 
 export function Layout({ title, children }: LayoutProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -65,6 +68,8 @@ export function Layout({ title, children }: LayoutProps) {
           <Divider borderColor="whiteX.500" />
           <Flex padding="1.875rem" bgColor="whiteX.700">
             {children}
+          </Flex>
+          <Flex>
           </Flex>
         </Box>
       </Flex>

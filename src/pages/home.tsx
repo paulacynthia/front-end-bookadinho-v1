@@ -1,8 +1,8 @@
 import { Book } from "../components/Books";
-import { Layout } from "../layout/Bookadinho/Layout";
 import { SimpleGrid } from "@chakra-ui/react";
 import { home } from "../utils/routes/routes";
 import { useEffect, useState } from "react";
+import { Layout } from "../layout/Bookadinho/Layout";
 
 export default function Home() {
   const [books, setBooks] = useState([])

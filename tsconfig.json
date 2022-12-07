@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/home.jsx", "pages/perfil.jsx"  ],
+, "src/pages/home.jsx", "src/pages/perfil.jsx"  ],
   "exclude": [
     "node_modules"
   ]

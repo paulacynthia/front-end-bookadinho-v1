@@ -1,8 +1,8 @@
 import { Avatar, Box, Card, CardBody, Flex, Image, Link, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Layout } from "../layout/Bookadinho/Layout";
 import { chatsPreview } from "../utils/routes/routes";
+import { Layout } from "../layout/Bookadinho/Layout";
 
 
 const Chats = () => {
