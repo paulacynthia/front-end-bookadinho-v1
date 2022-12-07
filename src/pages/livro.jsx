@@ -1,5 +1,11 @@
 import {
-  Box, Button, Flex, Icon, Image, Spinner, Text
+  Box,
+  Button,
+  Flex,
+  Icon,
+  Image,
+  Spinner,
+  Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -7,16 +13,15 @@ import { AiOutlineUser } from "react-icons/ai";
 import { Layout } from "../layout/Bookadinho/Layout";
 import { changeBook } from "../utils/routes/routes";
 
-export default function Bola() {
+export default function Livro() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState({});
-  const [profile, setProfile] = useState({})
+  const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    const locaStorage = window.localStorage.getItem('profile')
-    console.log('asdasd', JSON.parse(locaStorage))
-    setProfile(JSON.parse(locaStorage))
+    const locaStorage = window.localStorage.getItem("profile");
+    setProfile(JSON.parse(locaStorage));
 
     const getBook = async () => {
       const request = await changeBook({ bookid: router.query.id });
@@ -75,11 +80,13 @@ export default function Bola() {
               color: "orangeX.600",
               background: "#F9E0D9",
             }}
-            isDisabled={profile.userName == books.profile.userName ? true : false}
+            isDisabled={
+              profile.userName == books.profile.userName ? true : false
+            }
             transition="all 0.2s"
             _active={{ backgroundColor: "orangeX.600", color: "#F9E0D9" }}
             margin="0 auto"
-            onClick={() => window.location.href = `/chat`}
+            onClick={() => (window.location.href = `/chat`)}
           >
             Tenho interesse!
           </Button>

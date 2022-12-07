@@ -1,4 +1,12 @@
-import { Avatar, Badge, Flex, Spinner, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Badge,
+  Flex,
+  Spinner,
+  Tag,
+  TagLabel,
+  Text,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Layout } from "../layout/Bookadinho/Layout";
 
@@ -23,24 +31,86 @@ export default function Profile() {
       />
     </Flex>
   ) : (
-    <Layout title={"Seu perfil"}>
-      <Flex flexDirection="column" align={"center"} justify="center" gap="0.5rem" widht="full">
-        <Avatar src="" name={users.name} />
-        <Text>{users.userName}</Text>
-        <Text>{users.description}</Text>
-        <Flex>
-          <Text>Gostos:</Text>
-          <Flex align={"center"}>
+    <Layout title={<ProfileTest />}>
+      <Flex
+        align={"center"}
+        justify="center"
+        gap="2rem"
+        minWidth={"full"}
+        direction="column"
+      >
+        <Flex
+          align={"center"}
+          justify="center"
+          gap="0.5rem"
+          minWidth={"full"}
+          direction="column"
+        >
+          <Avatar src="" name={users.name} />
+
+          <Text>{users.userName}</Text>
+          <Text
+            fontFamily="Dm Sans"
+            fontWeight="400"
+            fontSize="1rem"
+            color="#0F241D"
+          >
+            {users.description}
+          </Text>
+          <Flex>
             {users.likes.map((like) => (
-              <Badge
-                colorScheme={"orange"}
-                borderRadius="full"
-                px="2"
-                ml="2"
-                key={like}
-              >
+              <Badge borderRadius="full" px="2" ml="2" key={like}>
                 {like}
               </Badge>
+            ))}
+          </Flex>
+        </Flex>
+        <Flex
+          align={"start"}
+          minWidth={"full"}
+          flexDirection={"column"}
+          gap="0.5rem"
+        >
+          <Text>Últimas leituras:</Text>
+          <Flex
+            align="center"
+            justify="center"
+            gap="0.5rem"
+            maxWidth={"full"}
+            wrap="wrap"
+          >
+            {users.latestReadings.map((lastRead) => (
+              <Badge borderRadius="full" key={lastRead}>
+                {lastRead}
+              </Badge>
+            ))}
+          </Flex>
+        </Flex>
+        <Flex
+          align={"start"}
+          minWidth={"full"}
+          flexDirection={"column"}
+          gap="0.5rem"
+        >
+          <Text>Livros para trocar:</Text>
+          <Flex
+            align="center"
+            justify="center"
+            gap="0.5rem"
+            maxWidth={"full"}
+            wrap="wrap"
+          >
+            {users.changeBooks.map((changeBook) => (
+              <Tag size="lg" borderRadius="full">
+                <Avatar
+                  src=""
+                  size="xs"
+                  name={changeBook.name}
+                  ml={-1}
+                  mr={2}
+                />
+                <TagLabel>{changeBook.name}</TagLabel>
+              </Tag>
             ))}
           </Flex>
         </Flex>
@@ -48,3 +118,17 @@ export default function Profile() {
     </Layout>
   );
 }
+
+const ProfileTest = () => {
+  let profile = window.localStorage.getItem("profile");
+  profile = JSON.parse(profile);
+
+  return (
+    <>
+      <Flex width={"full"} gap="0.5rem">
+        <Text>Seu perfil:</Text>
+        <Text>{profile.name}</Text>
+      </Flex>
+    </>
+  );
+};

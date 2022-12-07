@@ -1,8 +1,6 @@
 import {
   Box,
-  BoxProps,
-  Button,
-  CloseButton,
+  BoxProps, CloseButton,
   Divider,
   Drawer,
   DrawerContent,
@@ -10,7 +8,7 @@ import {
   FlexProps,
   IconButton,
   Text,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { FiMenu } from "react-icons/fi";
@@ -20,8 +18,6 @@ interface LayoutProps {
   title: string | any;
   children: ReactNode;
 }
-
-
 
 export function Layout({ title, children }: LayoutProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -51,16 +47,14 @@ export function Layout({ title, children }: LayoutProps) {
         height="100vh"
         paddingTop="2.9375rem"
         marginLeft="15rem"
-        
       >
-        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh" >
-          <Flex padding="1.875rem 30rem 1.875rem 1.875rem" width={"full"}>
+        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh">
+          <Flex padding="1.875rem 30rem 1.875rem 1.875rem" width="full">
             <Text
               fontFamily="Dm Sans"
               fontWeight="400"
               fontSize="1rem"
               color="#0F241D"
-              width="full"
             >
               {title}
             </Text>
@@ -68,8 +62,6 @@ export function Layout({ title, children }: LayoutProps) {
           <Divider borderColor="whiteX.500" />
           <Flex padding="1.875rem" bgColor="whiteX.700">
             {children}
-          </Flex>
-          <Flex>
           </Flex>
         </Box>
       </Flex>
