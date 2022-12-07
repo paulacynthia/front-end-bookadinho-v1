@@ -5,8 +5,7 @@ export function MenuLinks() {
     <Flex direction="column" gap="1rem">
       {[
         "Home",
-        "Chat",
-        "Maps",
+        "Chats",
         "Notificações",
         "Perfil",
         "Cadastrar Livro",
@@ -23,7 +22,7 @@ export function MenuLinks() {
             color: "orangeX.600",
             fontWeight: "700",
           }}
-          href={`/${item}`.toLowerCase()}
+          href={`/${item === "Notificações" ? "Notificacao" : item}`.toLowerCase()}
         >
           {item}
         </Link>
