@@ -1,4 +1,4 @@
-import { Box, Flex, Image, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Avatar, Box, Card, CardBody, Flex, Image, Link, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Layout } from "../layout/Bookadinho/Layout";
@@ -34,21 +34,48 @@ const Chats = () => {
       </Flex>
     ) : (
       <Layout title={"Chats"}>
-        <SimpleGrid maxWidth="50rem" columns={1} grid-template-rows={1} spacing={10}>
+        <SimpleGrid  width="100%" columns={1} grid-template-rows={1} spacing={10}>
           {
             previews.map((preview) => (
-              <Box
-                key={preview.id}
-                width="100%"
-              >
-                <Image
-                  src={preview.lastMessage.photo}
-                  fallbackSrc="https://via.placeholder.com/107x149"
-                  width="150px"
-                />
-                {console.log(preview)}
-                {preview.lastMessage.message}
-              </Box>
+              <Link _hover={{textDecation: "none", background: '#E4E4E4', borderRadius: "5px"}} key={preview.id}>
+                <Card>
+                  <CardBody display="flex" justifyContent="space-between" alignItems="center" >
+                    <Flex alignItems="center" gap="10px">
+                      <Avatar name={preview.lastMessage.origin} src={preview.lastMessage.photo} />
+                      <Text
+                        as="p"
+                        fontFamily="Dm Sans"
+                        fontWeight="500"
+                        fontSize="1rem"
+                        color="#0F241D"
+                      >
+                        {console.log('preview', preview)}
+                        {preview.lastMessage.origin}
+                      </Text>
+                    </Flex>
+
+                    <Text
+                      as="p"
+                      fontFamily="Dm Sans"
+                      fontWeight="500"
+                      fontSize="1rem"
+                      color="#0F241D"
+                    >
+                      {preview.lastMessage.message}
+                    </Text>
+
+                    <Text
+                      as="p"
+                      fontFamily="Dm Sans"
+                      fontWeight="500"
+                      fontSize="1rem"
+                      color="#0F241D"
+                    >
+                      {`${new Date(preview.lastMessage.time).getUTCDay('DD')}/${new Date(preview.lastMessage.time).getUTCMonth()}/${new Date(preview.lastMessage.time).getUTCFullYear()}`}
+                    </Text>
+                  </CardBody>
+                </Card>
+              </Link>
             ))
           }
         </SimpleGrid>
