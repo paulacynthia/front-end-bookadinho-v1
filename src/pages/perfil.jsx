@@ -5,7 +5,7 @@ import {
   Spinner,
   Tag,
   TagLabel,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Layout } from "../layout/Bookadinho/Layout";
