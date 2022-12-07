@@ -56,7 +56,7 @@ export default function Register() {
     }
 
     if(createdProfile.status === "200") {
-      localStorage.setItem('profile', JSON.stringify(createdProfile.result))
+      localStorage.setItem('profile', JSON.stringify(createdProfile.result[0]))
       return window.location.href = "/home";
     }
   }
@@ -125,8 +125,12 @@ export default function Register() {
             type="submit"
             backgroundColor="orangeX.600" color="whiteX.700"
             border="1px solid #0F241D"
-            _hover={{ color: "blackX.600" }}
-            _active={{ backgroundColor: "orangeX.600", opacity: '0.8', color: "blackX.600" }}
+            _hover={{
+              color: "orangeX.600",
+              background: "#F9E0D9",
+            }}
+            transition="all 0.2s"
+            _active={{ backgroundColor: "orangeX.600", color: "#F9E0D9" }}
             onClick={() => handleCreateProfile()}
           >
             Entrar

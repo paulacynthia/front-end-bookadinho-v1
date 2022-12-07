@@ -3,7 +3,7 @@ import { FiBook } from "react-icons/fi";
 import { HiBookmark } from "react-icons/hi";
 
 interface BookProps {
-  id: number | string
+  id: number | string;
   title: string;
   author: string;
   image: string;
@@ -31,8 +31,15 @@ export function Book({
       direction={"column"}
       justifyContent="space-between"
     >
-      <Flex gap="1rem" >
-        <Image maxWidth="9.375rem" src={image} alt={imageDescription} />
+      <Flex gap="1rem">
+        <Image
+          src={image}
+          alt={imageDescription}
+          maxWidth="107px"
+          maxHeight="149px"
+          fallbackSrc="https://via.placeholder.com/107x149"
+          borderRadius={"md"}
+        />
         <Box>
           <Flex justifyContent={"space-between"}>
             <Box>
@@ -67,6 +74,7 @@ export function Book({
               fontWeight="normal"
               fontSize="0.875rem"
               color="#767676"
+              noOfLines={3}
             >
               {description}
             </Text>
@@ -80,10 +88,17 @@ export function Book({
         letterSpacing="1px"
         borderRadius={"1.25rem"}
         _hover={{
-          color: "blackX.600",
+          color: "orangeX.600",
+          background: "#F9E0D9",
         }}
-        _active={{ backgroundColor: "blackX.600", color: "whiteX.600" }}
-        onClick={() => window.location.href = `/livro/?id=${id}&titulo=${title.replace(' ', '-')}`}
+        transition="all 0.2s"
+        _active={{ backgroundColor: "orangeX.600", color: "#F9E0D9" }}
+        onClick={() =>
+          (window.location.href = `/livro/?id=${id}&titulo=${title.replace(
+            " ",
+            "-"
+          )}`)
+        }
       >
         Visualizar o livro
       </Button>

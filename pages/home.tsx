@@ -1,7 +1,6 @@
 import { Book } from "../components/Books";
 import { Layout } from "../layout/Bookadinho/Layout";
 import { SimpleGrid } from "@chakra-ui/react";
-import { InputPattern } from "../components/Input";
 import { home } from "../utils/routes/routes";
 import { useEffect, useState } from "react";
 
@@ -17,7 +16,7 @@ export default function Home() {
   }, [])
 
   return (
-    <Layout title="Input">
+    <Layout title="Home">
       <SimpleGrid columns={2} spacing={10}>
         {books.map((book) => (
           <Book
