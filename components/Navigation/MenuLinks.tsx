@@ -6,8 +6,7 @@ export function MenuLinks() {
       {[
         "Home",
         "Chat",
-        "Maps",
-        "Notificações",
+        "Notifications",
         "Perfil",
         "Cadastrar Livro",
         "Livros Cadastrados",
