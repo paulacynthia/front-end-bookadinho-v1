@@ -35,7 +35,7 @@ const Chat = () => {
 
   return (
    <Layout title={"Chat"}>
-     <Flex w={"full"} justify="center" align="center">
+     <Flex w={'60rem'} justify="center" align="center">
       <Flex flexDir="column">
         <Header />
         <Divider />

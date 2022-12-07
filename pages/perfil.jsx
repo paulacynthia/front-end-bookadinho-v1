@@ -1,7 +1,6 @@
 import { Avatar, Badge, Flex, Spinner, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Layout } from "../layout/Bookadinho/Layout";
-import { profile } from "../utils/routes/routes";
 
 export default function Profile() {
   const [loading, setLoading] = useState(true);
