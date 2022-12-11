@@ -1,6 +1,7 @@
 import {
   Box,
-  BoxProps, CloseButton,
+  BoxProps,
+  CloseButton,
   Divider,
   Drawer,
   DrawerContent,
@@ -8,7 +9,7 @@ import {
   FlexProps,
   IconButton,
   Text,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { FiMenu } from "react-icons/fi";
