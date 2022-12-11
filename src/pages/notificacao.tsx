@@ -28,7 +28,7 @@ export default function Notifications() {
   }, []);
 
   return (
-    <Layout title={"Notificações"}>
+    <Layout title={"Notificações"} titleTag={"Notificações"}>
       <Card width="full">
         <CardHeader>
           <Text

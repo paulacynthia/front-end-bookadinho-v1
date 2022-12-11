@@ -18,7 +18,7 @@ export default function LivrosCadastrados() {
     }, [])
 
     return (
-        <Layout title="Livros Cadastrados">
+        <Layout title="Livros Cadastrados" titleTag={"Livros Cadastrados"}>
             <SimpleGrid columns={2} spacing={10}>
                 {
                     books.map((book) => (

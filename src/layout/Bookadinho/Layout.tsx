@@ -11,62 +11,69 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import Head from "next/head";
 import { ReactNode } from "react";
 import { FiMenu } from "react-icons/fi";
 import { MenuLinks } from "../../components/Navigation/MenuLinks";
 
 interface LayoutProps {
+  titleTag: string;
   title: string | any;
   children: ReactNode;
 }
 
-export function Layout({ title, children }: LayoutProps) {
+export function Layout({ titleTag, title, children }: LayoutProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg="#F7F8FA">
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      <Flex
-        justify="center"
-        height="100vh"
-        paddingTop="2.9375rem"
-        marginLeft="15rem"
-      >
-        <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh">
-          <Flex padding="1.875rem 30rem 1.875rem 1.875rem" width="full">
-            <Text
-              fontFamily="Dm Sans"
-              fontWeight="400"
-              fontSize="1rem"
-              color="#0F241D"
-            >
-              {title}
-            </Text>
-          </Flex>
-          <Divider borderColor="whiteX.500" />
-          <Flex padding="1.875rem" bgColor="whiteX.700">
-            {children}
-          </Flex>
-        </Box>
-      </Flex>
-    </Box>
+    <>
+      <Head>
+        <title>{titleTag ? ` ${titleTag}` : "Bookadinho"}</title>
+      </Head>
+      <Box minH="100vh" bg="#F7F8FA">
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: "none", md: "block" }}
+        />
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full"
+        >
+          <DrawerContent>
+            <SidebarContent onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
+        {/* mobilenav */}
+        <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
+        <Flex
+          justify="center"
+          height="100vh"
+          paddingTop="2.9375rem"
+          marginLeft="15rem"
+        >
+          <Box bgColor="whiteX.700" borderRadius="0.5rem" height="100vh">
+            <Flex padding="1.875rem 30rem 1.875rem 1.875rem" width="full">
+              <Text
+                fontFamily="Dm Sans"
+                fontWeight="400"
+                fontSize="1rem"
+                color="#0F241D"
+              >
+                {title}
+              </Text>
+            </Flex>
+            <Divider borderColor="whiteX.500" />
+            <Flex padding="1.875rem" bgColor="whiteX.700">
+              {children}
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
+    </>
   );
 }
 

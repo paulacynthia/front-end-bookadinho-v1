@@ -45,7 +45,7 @@ export default function CadastrarLivro() {
   };
 
   return (
-    <Layout title="Cadastrar Livro">
+    <Layout title="Cadastrar Livro" titleTag={"Cadastrar Livro"}>
       <Flex flexDirection="column" maxWidth="40rem" gap="2rem" margin="0 auto">
         <Flex
           flexDirection="column"

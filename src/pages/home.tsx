@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout title="Home">
+    <Layout title="Home" titleTag={"Home"}>
       <Flex direction={"column"} gap="2rem" width="full">
         <Input
           type="text"

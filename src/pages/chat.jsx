@@ -33,7 +33,7 @@ const Chats = () => {
         />
       </Flex>
     ) : (
-      <Layout title={"Chats"}>
+      <Layout title={"Chats"} titleTag={"Chat"}>
         <SimpleGrid  width="100%" columns={1} grid-template-rows={1} spacing={10}>
           {
             previews.map((preview) => (

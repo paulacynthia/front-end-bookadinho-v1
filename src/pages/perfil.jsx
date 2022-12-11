@@ -31,7 +31,7 @@ export default function Profile() {
       />
     </Flex>
   ) : (
-    <Layout title={<ProfileTest />}>
+    <Layout title={<ProfileTest />} titleTag={"Perfil"}>
       <Flex
         align={"center"}
         justify="center"

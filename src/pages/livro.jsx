@@ -44,7 +44,7 @@ export default function Livro() {
       />
     </Flex>
   ) : (
-    <Layout title={books.name}>
+    <Layout title={books.name} titleTag={books.name}>
       <Flex flexDirection="column" maxWidth="40rem" gap="1rem" margin="0 auto">
         <Image
           fallbackSrc="https://via.placeholder.com/107x149"
