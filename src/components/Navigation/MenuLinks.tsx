@@ -1,8 +1,9 @@
 import { Button, Flex, Link } from "@chakra-ui/react";
 import { FiLogOut } from "react-icons/fi";
 
+import NextLink from "next/link";
+
 export function MenuLinks() {
-  
   function clearLocalStorage() {
     localStorage.clear();
     return (window.location.href = "/");
@@ -25,6 +26,7 @@ export function MenuLinks() {
           "Livros Cadastrados",
         ].map((item, index) => (
           <Link
+            as={NextLink}
             key={index}
             color="#0F241D"
             fontWeight="400"
