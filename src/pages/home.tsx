@@ -1,26 +1,37 @@
+import { Flex, Input, SimpleGrid } from "@chakra-ui/react";
+import { useState } from "react";
 import { Book } from "../components/Books";
-import { Flex, Input, SimpleGrid, Text } from "@chakra-ui/react";
-import { home } from "../utils/routes/routes";
-import { useEffect, useState } from "react";
 import { Layout } from "../layout/Bookadinho/Layout";
 
-export default function Home() {
-  const [books, setBooks] = useState([]);
+interface AllBooksProps {
+  id: string;
+  name: string;
+  author: string;
+  description: string;
+  photo: string;
+}
+
+export async function getStaticProps() {
+  const res = await fetch("https://back-end-bookadinho.vercel.app/home");
+  const data = await res.json();
+
+  return {
+    props: {
+      allBooks: data.result,
+    },
+  };
+}
+
+export default function Home({ allBooks }) {
   const [search, setSearch] = useState("");
 
   const lowerCaseSearch = search.toLowerCase();
 
   const filterBooks = search
-    ? books.filter((book) => book.name.toLowerCase().includes(lowerCaseSearch))
+    ? allBooks.filter((book: AllBooksProps) =>
+        book.name.toLowerCase().includes(lowerCaseSearch)
+      )
     : [];
-
-  useEffect(() => {
-    const handleBooks = async () => {
-      const reqBooks = await home();
-      setBooks(reqBooks.result);
-    };
-    handleBooks();
-  }, []);
 
   return (
     <Layout title="Home" titleTag={"Home"}>
@@ -41,7 +52,7 @@ export default function Home() {
         />
         {search ? (
           <SimpleGrid columns={2} spacing={10}>
-            {filterBooks.map((book) => (
+            {filterBooks.map((book: AllBooksProps) => (
               <Book
                 key={book.id}
                 id={book.id}
@@ -55,7 +66,7 @@ export default function Home() {
           </SimpleGrid>
         ) : (
           <SimpleGrid columns={2} spacing={10}>
-            {books.map((book) => (
+            {allBooks.map((book: AllBooksProps) => (
               <Book
                 key={book.id}
                 id={book.id}
