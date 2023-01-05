@@ -1,6 +1,23 @@
-import { Box, Flex, Icon, Image, Text, Button } from "@chakra-ui/react";
+import { Box, Flex, Icon, Text, Button, chakra } from "@chakra-ui/react";
 import { FiBook } from "react-icons/fi";
 import { HiBookmark } from "react-icons/hi";
+
+import NextImage from "next/image";
+
+const Image = chakra(NextImage, {
+  baseStyle: { maxH: 149, maxW: 107 },
+  shouldForwardProp: (prop) =>
+    [
+      "width",
+      "height",
+      "src",
+      "alt",
+      "quality",
+      "placeholder",
+      "blurDataURL",
+      "loader ",
+    ].includes(prop),
+});
 
 interface BookProps {
   id: number | string;
@@ -35,9 +52,8 @@ export function Book({
         <Image
           src={image}
           alt={imageDescription}
-          maxWidth="107px"
-          maxHeight="149px"
-          fallbackSrc="https://via.placeholder.com/107x149"
+          width="107"
+          height="149"
           borderRadius={"md"}
         />
         <Box>
@@ -93,12 +109,7 @@ export function Book({
         }}
         transition="all 0.2s"
         _active={{ backgroundColor: "orangeX.600", color: "#F9E0D9" }}
-        onClick={() =>
-          (window.location.href = `/livro/?id=${id}&titulo=${title.replace(
-            " ",
-            "-"
-          )}`)
-        }
+        onClick={() => (window.location.href = `/livro/${id}`)}
       >
         Visualizar o livro
       </Button>
