@@ -89,7 +89,7 @@ export function Book({
               fontFamily={"Dm Sans"}
               fontWeight="normal"
               fontSize="0.875rem"
-              color="#767676"
+              color="blackX.400"
               noOfLines={3}
             >
               {description}

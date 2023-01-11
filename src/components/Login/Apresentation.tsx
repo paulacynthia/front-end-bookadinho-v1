@@ -36,8 +36,8 @@ export default function Apresentation() {
           textAlign="center"
           fontFamily="Dm Sans"
           fontWeight="normal"
-          color={"#767676"}
-        >
+          color="blackX.400"
+          >
           Site voltado para o compartilhamento de livros democratizando a
           leitura.
         </Text>

@@ -9,7 +9,8 @@ export const theme = extendTheme({
     },
     blackX: {
       600: "#0F241D",
-      500: "#989B9A"
+      500: "#989B9A",
+      400: "#767676"
     },
     orangeX: {
       600: "#E97558",
