@@ -34,12 +34,12 @@ export default function InitialScreenRegister() {
         maxWidth={!isLargerThan768 ? "20rem" : "30rem"}
         fontSize={!isLargerThan768 ? "1rem" : "1.5rem"}
         fontWeight="700"
+        textAlign="center"
       >
         <Icon
           as={RiDoubleQuotesL}
           fontSize={!isLargerThan768 ? "1rem" : "1.5rem"}
-        />{" "}
-        {""}
+        />
         {phrasesMoment}
       </Text>
 
@@ -49,6 +49,7 @@ export default function InitialScreenRegister() {
         fontFamily={"Dm Sans"}
         fontWeight="normal"
         color="whiteX.600"
+        textAlign="center"
       >
         {bookMoment} - {authorMoment}
       </Text>
@@ -58,6 +59,7 @@ export default function InitialScreenRegister() {
         fontSize="1.125rem"
         color="whiteX.600"
         margin={!isLargerThan768 ? "2rem 0 2rem 0" : "2.5rem 0 2rem 0"}
+        textAlign="center"
       >
         Conheça o Bookadinho e dê uma nova vida para o seu livro.
       </Text>
