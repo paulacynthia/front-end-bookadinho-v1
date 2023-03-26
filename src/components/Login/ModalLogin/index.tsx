@@ -101,6 +101,11 @@ export function ModalLogin({ titleButton, form }: ModalLoginPros) {
                   fontSize: "0.9rem",
                 }}
                 borderColor="blackX.500"
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    handleLogin();
+                  }
+                }}  
               />
             </FormControl>
 
